@@ -29,7 +29,7 @@ type Voting struct {
 	event     string
 }
 
-// Meesenger is used to send text messages.
+// Messenger is used to send text messages.
 type Messenger interface {
 	RequestSMS(sender, msisdn, text string)
 }

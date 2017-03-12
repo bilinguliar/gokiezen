@@ -7,15 +7,14 @@ const (
 	countries = "ALL_COUNTRIES"
 	parties   = "ALL_PARTIES"
 
-	redisGet       = "GET"
-	redisIncr      = "INCR"
-	redisSAdd      = "SADD"
-	redisSRem      = "SREM"
-	redisSMembers  = "SMEMBERS"
-	redisSIsMember = "SISMEMBER"
+	redisGet      = "GET"
+	redisIncr     = "INCR"
+	redisSAdd     = "SADD"
+	redisSRem     = "SREM"
+	redisSMembers = "SMEMBERS"
 )
 
-// Connection pool used to make requests to Redis. Its size is provided by Configuration during application init.
+// ConnectionPool used to make requests to Redis. Its size is provided by Configuration during application init.
 type ConnectionPool interface {
 	Cmd(cmd string, args ...interface{}) *redis.Resp
 }

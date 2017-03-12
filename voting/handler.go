@@ -29,6 +29,7 @@ type Candidates interface {
 	Del(name string) error
 }
 
+// Message is a struct that we expect on web-hook endpoint when SMS was sent to us.
 type Message struct {
 	Originator string
 	Body       string
@@ -54,6 +55,7 @@ func NewController(v Votes, c Candidates) *Controller {
 	return ctrl
 }
 
+// HandleCandidates is responsible for add/delete operations on candidates.
 func (c *Controller) HandleCandidates(w http.ResponseWriter, req *http.Request) {
 	switch req.Method {
 	case "POST":
@@ -171,7 +173,7 @@ func (c *Controller) sendUpdates() {
 	for now := range t {
 		stats, err := c.voteSvc.GetStats()
 		if err != nil {
-			log.Println("Update was not propagated, time: %v, error: %q", now, err)
+			log.Printf("Update was not propagated, time: %v, error: %q\n", now, err)
 			continue
 		}
 

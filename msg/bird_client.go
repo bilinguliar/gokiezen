@@ -34,7 +34,7 @@ func NewMsgBirdClient(token string, mc chan Request) *Birdman {
 	return c
 }
 
-// SendTest sends SMS from sender to a recepient with provided text.
+// SendText sends SMS from sender to a recepient with provided text.
 func (c *Birdman) SendText(sender, recepient, text string) error {
 	m, err := c.mbClient.NewMessage(sender, []string{recepient}, text, &mb.MessageParams{})
 	if err != nil {

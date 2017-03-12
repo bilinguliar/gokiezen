@@ -5,6 +5,7 @@ import (
 	"log"
 )
 
+// Request stores SMS details that will be used in NewMessage.
 type Request struct {
 	Sender    string
 	Recepient string
