@@ -1,0 +1,32 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>World Domination Voting</title>
+</head>
+
+<body>
+<h1>Voting Stats</h1>
+The most recent data:<br/>
+
+<span id="votingData"></span>
+
+<script type="text/javascript">
+    var uri = "ws://localhost/stats/ws",
+    	ws = new WebSocket(uri);
+
+    ws.onmessage = function (event) {
+        var mySpan = document.getElementById("votingData");
+        mySpan.innerHTML = event.data;
+    };
+
+    ws.onerror = function (event) {
+        console.log("Smth. went wrong: ", event)
+    };
+
+    function closeConnection() {
+        ws.close();
+    }
+</script>
+
+</body>
+</html>
