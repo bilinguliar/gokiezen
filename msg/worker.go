@@ -26,7 +26,6 @@ func StartSendingMessages(ctx context.Context, mc chan Request, m Messenger) {
 		case <-ctx.Done():
 			return
 		case req = <-mc:
-			log.Printf("SMS requested, details: %#v\n", req)
 			err := m.SendText(req.Sender, req.Recepient, req.Text)
 			if err != nil {
 				log.Println("Failed to send SMS, error:", err)
