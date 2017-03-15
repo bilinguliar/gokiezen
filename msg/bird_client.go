@@ -34,9 +34,9 @@ func NewMsgBirdClient(token string, mc chan Request) *Birdman {
 	return c
 }
 
-// SendText sends SMS from sender to a recepient with provided text.
-func (c *Birdman) SendText(sender, recepient, text string) error {
-	m, err := c.mbClient.NewMessage(sender, []string{recepient}, text, &mb.MessageParams{})
+// SendText sends SMS from sender to a recipient with provided text.
+func (c *Birdman) SendText(sender, recipient, text string) error {
+	m, err := c.mbClient.NewMessage(sender, []string{recipient}, text, &mb.MessageParams{})
 	if err != nil {
 		if err == mb.ErrResponse {
 			for _, mbError := range m.Errors {
@@ -60,6 +60,6 @@ func (c *Birdman) Lookup(msisdn string) (string, error) {
 }
 
 // RequestSMS adds SMS request to the channel, it will be send sometime in the future.
-func (c *Birdman) RequestSMS(sender, recepient, text string) {
-	c.msgChan <- Request{Sender: sender, Recepient: recepient, Text: text}
+func (c *Birdman) RequestSMS(sender, recipient, text string) {
+	c.msgChan <- Request{Sender: sender, Recipient: recipient, Text: text}
 }

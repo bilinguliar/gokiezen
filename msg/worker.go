@@ -8,7 +8,7 @@ import (
 // Request stores SMS details that will be used in NewMessage.
 type Request struct {
 	Sender    string
-	Recepient string
+	Recipient string
 	Text      string
 }
 
@@ -26,7 +26,7 @@ func StartSendingMessages(ctx context.Context, mc chan Request, m Messenger) {
 		case <-ctx.Done():
 			return
 		case req = <-mc:
-			err := m.SendText(req.Sender, req.Recepient, req.Text)
+			err := m.SendText(req.Sender, req.Recipient, req.Text)
 			if err != nil {
 				log.Println("Failed to send SMS, error:", err)
 			}
