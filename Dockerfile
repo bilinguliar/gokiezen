@@ -2,8 +2,6 @@ FROM debian
 
 MAINTAINER zakharov.andrii@gmail.com
 
-ENV TOKEN=mMovLkapqLxAMseLQ4oBwZ6aq
-
 ENV PORT=80
 ENV REDIS_HOST=redis
 ENV REDIS_PORT=6379
