@@ -1,0 +1,53 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Vote",
+		"_postman_id": "a7a02577-809d-5824-be9c-6a7fea440cdc",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get voting statistics",
+			"request": {
+				"url": "localhost/stats",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Add candidate John",
+			"request": {
+				"url": "localhost/candidates?name=John",
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Submit vote",
+			"request": {
+				"url": "http://localhost/track",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"originator\": \"380662556677\",\n\t\"body\": \"John\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
