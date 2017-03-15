@@ -21,8 +21,9 @@ The most recent data:<br/>
 
     ws.onerror = function (event) {
         console.log("Smth. went wrong: ", event)
-    };
+    }; 
 
+    // FIXME when you should be closed?
     function closeConnection() {
         ws.close();
     }
