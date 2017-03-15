@@ -132,7 +132,7 @@ func (c *Controller) GetStatsWS(w http.ResponseWriter, req *http.Request) {
 	}
 }
 
-// HandleVote accepts requests with SMS data and passes this data to service responcible for processing.
+// HandleVote accepts requests with SMS data and passes this data to service responsible for processing.
 func (c *Controller) HandleVote(w http.ResponseWriter, req *http.Request) {
 	// Expecting only POST from messaging service.
 	if req.Method != "POST" {
