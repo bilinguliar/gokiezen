@@ -5,9 +5,7 @@ import (
 	"strings"
 )
 
-const (
-	unresolved = "N/A"
-)
+const unresolved = "N/A"
 
 // StatItem holds counter name and current read.
 type StatItem struct {
