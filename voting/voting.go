@@ -120,6 +120,9 @@ func (s *Voting) GetStats() (Stats, error) {
 	}, nil
 }
 
+// populateStatItems checks counter read for every key and then returns slice with all resolved values.
+// If there was an error reading single counter we use -1 as temporary value.
+// We assume that this will not happen during next update. And we still able to show other values.
 func (s *Voting) populateStatItems(keys []string) []StatItem {
 	results := make([]StatItem, 0, len(keys))
 
