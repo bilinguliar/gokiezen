@@ -45,7 +45,7 @@ func TestRegisterVote(t *testing.T) {
 	svc.RegisterVote(msisdn, abba)
 
 	if stats[abba] != 1 {
-		t.Error("Score for ABBA is %d, expected %d", stats[abba], 1)
+		t.Errorf("Score for ABBA is %d, expected %d", stats[abba], 1)
 	}
 
 	if _, ok := countries["UKR"]; !ok {
@@ -58,7 +58,7 @@ func TestRegisterVote(t *testing.T) {
 	svc.RegisterVote(msisdn2, gc)
 
 	if stats[gc] != 1 {
-		t.Error("Score for Gigliola Cinquetti is %d, expected %d", stats[gc], 1)
+		t.Errorf("Score for Gigliola Cinquetti is %d, expected %d", stats[gc], 1)
 	}
 
 	if _, ok := countries["NLD"]; !ok {
