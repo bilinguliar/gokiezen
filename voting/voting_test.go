@@ -16,7 +16,22 @@ func TestRegisterVote(t *testing.T) {
 				messages[recipient] = text
 			},
 		},
-		&EnquirerMock{},
+		&EnquirerMock{
+			LookupFunc: func(msisdn string) (string, error) {
+				var country string
+
+				switch msisdn[:3] {
+				case "380":
+					country = "UKR"
+				case "310":
+					country = "NLD"
+				default:
+					return "", errors.New("lookup failed")
+				}
+
+				return country, nil
+			},
+		},
 		&SkoreKprMock{
 			AddPointFunc: func(key string) error {
 				stats[key]++
@@ -94,21 +109,12 @@ func (sk *SkoreKprMock) AddCountry(code string) error {
 	return sk.AddCountryFunc(code)
 }
 
-type EnquirerMock struct{}
+type EnquirerMock struct {
+	LookupFunc func(msisdn string) (string, error)
+}
 
 func (e *EnquirerMock) Lookup(msisdn string) (string, error) {
-	var country string
-
-	switch msisdn[:3] {
-	case "380":
-		country = "UKR"
-	case "310":
-		country = "NLD"
-	default:
-		return "", errors.New("lookup failed")
-	}
-
-	return country, nil
+	return e.LookupFunc(msisdn)
 }
 
 type MessengerMock struct {

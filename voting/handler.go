@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"strings"
 	"time"
 
 	"github.com/gorilla/websocket"
@@ -149,6 +150,8 @@ func (c *Controller) HandleVote(w http.ResponseWriter, req *http.Request) {
 	}
 
 	defer req.Body.Close()
+
+	msg.Body = strings.TrimSpace(msg.Body)
 
 	err = c.voteSvc.RegisterVote(msg.Originator, msg.Body)
 	if err != nil {
