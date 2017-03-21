@@ -64,7 +64,6 @@ func (s *Voting) RegisterVote(msisdn, cand string) error {
 		err     error
 	)
 
-	cand = strings.TrimSpace(cand)
 	if cand == "" {
 		log.Println("Voter sent blank SMS, score not changed.")
 		s.messenger.RequestSMS(s.event, msisdn, "Please specify candidate's name to actually vote.")
