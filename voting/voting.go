@@ -1,9 +1,6 @@
 package voting
 
-import (
-	"log"
-	"strings"
-)
+import "log"
 
 const unresolved = "N/A"
 
